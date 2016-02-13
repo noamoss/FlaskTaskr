@@ -1,3 +1,4 @@
+# project_config.py
 import os
 
 # grab the folder where this script lives
@@ -20,3 +21,5 @@ d3683f5be06e1a e13b1a08bcf907 9e0f0bb14de4a2 d5bbddf64fc3f1 9ca989f8ab5a8a
 # define the full path for the database
 DATABASE_PATH = os.path.join(basedir, DATABASE)
 
+# the database uri
+SQLALCHEMY_DATABASE_URI = 'sqlite:///' + DATABASE_PATH
