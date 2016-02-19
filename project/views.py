@@ -3,7 +3,7 @@
 ################
 ### imports ###
 ###############
-
+import datetime
 from functools import wraps
 from flask import Flask, flash, redirect, render_template,\
     request, url_for, session
@@ -86,12 +86,15 @@ def new_task():
                 form.name.data,
                 form.due_date.data,
                 form.priority.data,
+                '1',
+                datetime.datetime.utcnow().date(),
                 '1'
             )
             db.session.add(new_task)
             db.session.commit()
             flash('New entry was succesfully posted. Thanks')
-        return redirect(url_for('tasks'))
+
+    return redirect(url_for('tasks'))
 
 # Mark tasks as complete
 @app.route('/complete/<int:task_id>/')
@@ -100,7 +103,7 @@ def complete(task_id):
     new_id = task_id
     db.session.query(Task).filter_by(task_id=new_id).update({"status":"0"})
     db.session.commit()
-    flash("The task isi complete. Nice.")
+    flash("The task is complete. Nice.")
     return redirect(url_for('tasks'))
 
 # Delete Tasks

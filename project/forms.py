@@ -10,8 +10,8 @@ class AddTaskForm(Form):
     task_id = IntegerField()
     name = StringField('Task Name', validators=[DataRequired()])
     due_date = DateField(
-        'Date Due (mm/dd/yyyy)',
-        validators=[DataRequired()], format='%m/%d/%Y'
+        'Date Due (dd/mm/yyyy)',
+        validators=[DataRequired()], format='%d/%m/%Y'
     )
     priority = SelectField(
         'Priority',
