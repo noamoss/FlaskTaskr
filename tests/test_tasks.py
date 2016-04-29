@@ -1,9 +1,9 @@
 import unittest
 import os
 
-from views import app, db
-from _config import basedir
-from models import User
+from project import app, db
+from project._config import basedir
+from project.models import User
 
 TEST_DB = 'test.db'
 
@@ -79,7 +79,7 @@ class TasksTests(unittest.TestCase):
         self.login('Michael','python')
         self.app.get('tasks/', follow_redirects=True)
         response = self.create_task()
-        self.assertIn(b'New entry was succesfully posted. Thanks', response.data)
+        self.assertIn(b'New entry was successfully posted. Thanks.', response.data)
 
     def test_users_cannot_complete_tasks_that_are_not_created_by_them(self):
         self.create_user('Michael','michael@realpython.com','python')
