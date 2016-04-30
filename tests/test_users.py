@@ -1,7 +1,7 @@
 import unittest
 import os
 
-from project import app, db
+from project import app, db, bcrypt
 from project._config import basedir
 from project.models import User
 
